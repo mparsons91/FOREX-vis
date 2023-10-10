@@ -7,6 +7,7 @@ import countriesGeoJSON from './data/countries.json';
 
 function MapComponent() {
   const center = [35, 25]; // initial center coordinates
+  const [showModal, setShowModal] = React.useState(false); //sets modal off as default
 
   const data = [1, 2, 3, 4, 5];
   const width = 640;
@@ -36,9 +37,14 @@ function MapComponent() {
     [180, 347],
   ];
 
+  //Toggles the modal on and off
+  const toggleModal = () => {
+    setShowModal((current) => !current);
+  };
+
   const mouseDownFeature = (e) => {
     const layer = e.target;
-
+    toggleModal();
     layer.setStyle({
       weight: 1.5,
       color: '047127',
@@ -51,7 +57,6 @@ function MapComponent() {
 
   const mouseUpFeature = (e) => {
     const layer = e.target;
-
     layer.setStyle({
       weight: 1.5,
       color: '047127',
@@ -114,19 +119,24 @@ function MapComponent() {
         }}
       />
 
-      <div className="overlay-div">
-        <h1>Foreign Exchange Visualization</h1>
-        <p>this is where we can generate graphs</p>
+      {/* This section should be populared with our dataset. Should probably move to separate file... */}
+      {showModal && 
+        <div className="overlay-div">
+        
+          <h1>Foreign Exchange Visualization</h1>
+          <p>this is where we can generate graphs</p>
 
-        <svg width={width} height={height}>
-          <path fill="none" stroke="currentColor" strokeWidth={1.5} d={line(data)} />
-          <g fill="white" stroke="currentColor" strokeWidth={1.5}>
-            {data.map((d, i) => (
-              <circle key={i} cx={x(i)} cy={y(d)} r="2.5" />
-            ))}
-          </g>
-        </svg>
-      </div>
+          <svg width={width} height={height}>
+            <path fill="none" stroke="currentColor" strokeWidth={1.5} d={line(data)} />
+            <g fill="white" stroke="currentColor" strokeWidth={1.5}>
+              {data.map((d, i) => (
+                <circle key={i} cx={x(i)} cy={y(d)} r="2.5" />
+              ))}
+            </g>
+          </svg>
+        </div>
+      }
+      
     </MapContainer>
   );
 }
