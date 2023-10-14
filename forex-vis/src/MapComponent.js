@@ -8,6 +8,17 @@ import countriesGeoJSON from './data/countries.json';
 function MapComponent() {
   const center = [35, 25]; // initial center coordinates
   const [showModal, setShowModal] = React.useState(false); //sets modal off as default
+  const [selectedCountries, setSelectedCountries] = React.useState([]); // Selected countries
+
+  React.useEffect(() => {
+    if (selectedCountries.length > 2){
+      toggleModal();
+      setSelectedCountries(selectedCountries.slice(2));
+    }
+    if (selectedCountries.length === 2) {
+      toggleModal();
+    }
+  }, [selectedCountries]);
 
   const data = [1, 2, 3, 4, 5];
   const width = 640;
@@ -44,7 +55,17 @@ function MapComponent() {
 
   const mouseDownFeature = (e) => {
     const layer = e.target;
-    toggleModal();
+    const countryName = e.sourceTarget.feature.properties.NAME;
+    
+    setSelectedCountries((prevSelectedCountries) => {
+      // Check if the countryName is not already in the selectedCountries array
+      if (!prevSelectedCountries.includes(countryName)) {
+        return [...prevSelectedCountries, countryName];
+      }else {
+        return prevSelectedCountries;
+      }
+    });
+
     layer.setStyle({
       weight: 1.5,
       color: '047127',
@@ -90,6 +111,7 @@ function MapComponent() {
       fillOpacity: 0.2,
     });
   };
+  
 
   return (
     <MapContainer
@@ -122,18 +144,26 @@ function MapComponent() {
       {/* This section should be populared with our dataset. Should probably move to separate file... */}
       {showModal && 
         <div className="overlay-div">
-        
+          
           <h1>Foreign Exchange Visualization</h1>
-          <p>this is where we can generate graphs</p>
 
-          <svg width={width} height={height}>
-            <path fill="none" stroke="currentColor" strokeWidth={1.5} d={line(data)} />
-            <g fill="white" stroke="currentColor" strokeWidth={1.5}>
-              {data.map((d, i) => (
-                <circle key={i} cx={x(i)} cy={y(d)} r="2.5" />
-              ))}
-            </g>
-          </svg>
+          <h2>Showing forex data for:</h2>
+          {selectedCountries.slice(0,2).map((country, index) => (
+            <li key={index}>{country}</li>
+          ))}
+
+          <p>this is where we can generate graphs</p>
+          <div className="forexChart">
+            <svg>
+              <path fill="none" stroke="currentColor" strokeWidth={1.5} d={line(data)} />
+              <g fill="white" stroke="currentColor" strokeWidth={1.5}>
+                {data.map((d, i) => (
+                  <circle key={i} cx={x(i)} cy={y(d)} r="2.5" />
+                ))}
+              </g>
+            </svg>
+          </div>
+        
         </div>
       }
       
