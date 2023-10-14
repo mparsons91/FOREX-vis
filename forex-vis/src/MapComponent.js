@@ -65,15 +65,6 @@ function MapComponent() {
         return prevSelectedCountries;
       }
     });
-
-    layer.setStyle({
-      weight: 1.5,
-      color: '047127',
-      dashArray: '',
-      fillOpacity: 0.8,
-    });
-
-    layer.bringToFront();
   };
 
   const mouseUpFeature = (e) => {
@@ -90,25 +81,37 @@ function MapComponent() {
 
   const highlightFeature = (e) => {
     const layer = e.target;
+    const countryName = e.sourceTarget.feature.properties.NAME;
 
-    layer.setStyle({
-      weight: 1.5,
-      color: 'white',
-      dashArray: '',
-      fillOpacity: 0.4,
+    setSelectedCountries((prevSelectedCountries) => {
+      if (!prevSelectedCountries.includes(countryName)) {
+        layer.setStyle({
+          weight: 1.5,
+          color: 'white',
+          dashArray: '',
+          fillOpacity: 0.4,
+        });
+    
+        layer.bringToFront();
+      }
+      return prevSelectedCountries;
     });
-
-    layer.bringToFront();
   };
 
   const resetHighlight = (e) => {
     const layer = e.target;
+    const countryName = e.sourceTarget.feature.properties.NAME;
 
-    layer.setStyle({
-      weight: 1,
-      color: 'white',
-      dashArray: '3',
-      fillOpacity: 0.2,
+    setSelectedCountries((prevSelectedCountries) => {
+      if (!prevSelectedCountries.includes(countryName)) {
+        layer.setStyle({
+          weight: 1,
+          color: 'white',
+          dashArray: '3',
+          fillOpacity: 0.2,
+        });
+      }
+      return prevSelectedCountries;
     });
   };
   
