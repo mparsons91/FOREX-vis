@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import countriesGeoJSON from './data/countries.json';
 import './MapComponent.css';
-import CandlestickChart from './components/CandlestickChart';
+import * as d3 from 'd3';
 
 const MapComponent = () => {
   const [selectedCountries, setSelectedCountries] = useState([]);
@@ -53,37 +53,47 @@ const MapComponent = () => {
 
   return (
     <div style={{ position: 'relative', width: '100vw', height: '100vh' }}>
-      <div className={overlayClass}>
-        <div className='grabber-bar' onClick={toggleOverlay}></div>
-        <h1>Foreign Exchange Visualization</h1>
-        <h2>Showing forex data for:</h2>
-        {selectedCountries.slice(0, 2).map((country, index) => (
-          <li key={country}>{country}</li>
-        ))}
-        <p>This is where we can generate graphs:</p>
-        <CandlestickChart/>
+          <div className='overlay-div'>
+            <h1>Foreign Exchange Visualization</h1>
+
+            <h2>Showing forex data for:</h2>
+            {selectedCountries.slice(0,2).map((country, index) => (
+              <li key={index}>{country}</li>
+            ))}
+
+          <p>this is where we can generate graphs</p>
+          <div className="forexChart">
+            <svg>
+              <path fill="none" stroke="currentColor" strokeWidth={1.5} d={line(data)} />
+              <g fill="white" stroke="currentColor" strokeWidth={1.5}>
+                {data.map((d, i) => (
+                  <circle key={i} cx={x(i)} cy={y(d)} r="2.5" />
+                ))}
+              </g>
+            </svg>
+          </div>
+
+          </div>
+          <MapContainer center={[35, 25]} zoom={3} style={{ width: '100%', height: '100%', zIndex: 0 }}>
+            <TileLayer
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              minZoom={3}
+              maxZoom={4}
+            />
+
+            <GeoJSON
+              data={countriesGeoJSON}
+              style={geoJSONStyle}
+              onEachFeature={(feature, layer) => {
+                const countryName = feature.properties.NAME;
+                layer.on({
+                  click: () => toggleCountrySelection(countryName),
+                });
+              }}
+            />
+          </MapContainer>
       </div>
-      <MapContainer center={[35, 25]} zoom={3} style={{ width: '100%', height: '100%', zIndex: 0 }}>
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          minZoom={3}
-          maxZoom={4}
-        />
-        <GeoJSON
-          data={countriesGeoJSON}
-          style={geoJSONStyle}
-          onEachFeature={(feature, layer) => {
-            const countryName = feature.properties.NAME;
-            layer.on({
-              click: () => toggleCountrySelection(countryName),
-              mouseover: () => handleCountryHover(countryName),
-              mouseout: handleCountryMouseOut,
-            });
-          }}
-        />
-      </MapContainer>
-    </div>
   );
 };
 
