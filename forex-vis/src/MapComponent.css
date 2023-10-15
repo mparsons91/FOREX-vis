@@ -24,43 +24,53 @@ html, body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
   font-family: 'Gajraj One', cursive;
   font-family: 'Roboto', sans-serif;
-  transition: right 300ms ease-in-out;
+  transition: right 300ms ease-in-out, filter 300ms ease-in-out;
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .grabber-bar {
   position: absolute;
   bottom: 2.5%;
-  left: -30px;
+  left: -31px;
   width: 30px;
   height: 15%;
-  border-radius: 5px 0px 0px 5px;
+  border-radius: 20px 0px 0px 20px;
   cursor: pointer;
   background: white;
   background: linear-gradient(
     to right bottom,
     rgba(255, 255, 255, 0.5),
     rgba(255, 255, 255, 0.3)
-    );
+  );
   z-index: 2;
-  backdrop-filter: blur(8px);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .grabber-bar:hover{
   background: linear-gradient(
     to right bottom,
     rgba(255, 255, 255, 0.9),
-    rgba(255, 255, 255, 0.3)
+    rgba(255, 255, 255, 0.7)
     );
 }
 
 .collapsed {
-  right: -40%;
+  right: -43%;
+  filter: opacity(0.5);
+}
+
+.polyline-shadow {
+  filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.6));
 }
 
 .li{
   font-weight: 900px;
 }
+
 .leaflet-bar a{
   border-radius: 5px;
   background-color: rgba(255,255,255,0.5);
@@ -80,13 +90,4 @@ html, body {
 .forexChart svg{
   width: 100%;
   height: 100%;
-}
-
-.geojson-feature {
-  fill: green;
-  transition: fill 0.3s ease-in-out; /* Add a transition for fill */
-}
-
-.geojson-feature:hover {
-  fill: darkgreen; /* Change color on hover */
 }

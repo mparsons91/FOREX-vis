@@ -13,6 +13,10 @@ const CandlestickChart = (props) => {
       xaxis: {
         type: 'datetime',
       },
+      grid: {
+        borderColor: '#333', // Change the grid border color
+        strokeDashArray: 4, // Add dashed grid lines
+      },
     },
     series: [
       {
