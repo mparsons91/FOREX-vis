@@ -6,19 +6,21 @@ import './MapComponent.css';
 
 const MapComponent = () => {
   const [selectedCountries, setSelectedCountries] = useState([]);
+  const [hoveredCountry, setHoveredCountry] = useState(null);
   const [isOverlayCollapsed, setIsOverlayCollapsed] = useState(false);
 
   const geoJSONStyle = (feature) => {
     const countryName = feature.properties.NAME;
     const isSelected = selectedCountries.includes(countryName);
+    const isHovered = countryName === hoveredCountry;
 
     return {
-      fillColor: isSelected ? 'darkred' : 'green',
+      fillColor: isSelected ? 'darkred' : isHovered ? 'lightcoral' : 'green',
       weight: 1,
       opacity: 1,
-      color: isSelected ? 'white' : 'white',
+      color: isSelected || isHovered ? 'white' : 'white',
       dashArray: isSelected ? '' : '3',
-      fillOpacity: isSelected ? 0.6 : 0.2,
+      fillOpacity: isSelected || isHovered ? 0.6 : 0.2,
     };
   };
 
@@ -34,6 +36,14 @@ const MapComponent = () => {
     });
   };
 
+  const handleCountryHover = (countryName) => {
+    setHoveredCountry(countryName);
+  };
+
+  const handleCountryMouseOut = () => {
+    setHoveredCountry(null);
+  };
+
   const toggleOverlay = () => {
     setIsOverlayCollapsed(!isOverlayCollapsed);
   };
@@ -46,9 +56,9 @@ const MapComponent = () => {
         <div className='grabber-bar' onClick={toggleOverlay}></div>
         <h1>Foreign Exchange Visualization</h1>
         <h2>Showing forex data for:</h2>
-          {selectedCountries.slice(0, 2).map((country, index) => (
-            <li key={country}>{country}</li>
-          ))}
+        {selectedCountries.slice(0, 2).map((country, index) => (
+          <li key={country}>{country}</li>
+        ))}
         <p>This is where we can generate graphs:</p>
       </div>
       <MapContainer center={[35, 25]} zoom={3} style={{ width: '100%', height: '100%', zIndex: 0 }}>
@@ -65,6 +75,8 @@ const MapComponent = () => {
             const countryName = feature.properties.NAME;
             layer.on({
               click: () => toggleCountrySelection(countryName),
+              mouseover: () => handleCountryHover(countryName),
+              mouseout: handleCountryMouseOut,
             });
           }}
         />
