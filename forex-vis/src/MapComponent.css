@@ -1,3 +1,8 @@
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 .overlay-div {
   position: absolute;
   height: 60%;
@@ -19,6 +24,38 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
   font-family: 'Gajraj One', cursive;
   font-family: 'Roboto', sans-serif;
+  transition: right 300ms ease-in-out;
+}
+
+.grabber-bar {
+  position: absolute;
+  bottom: 2.5%;
+  left: -30px;
+  width: 30px;
+  height: 15%;
+  border-radius: 5px 0px 0px 5px;
+  cursor: pointer;
+  background: white;
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.3)
+    );
+  z-index: 2;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
+}
+
+.grabber-bar:hover{
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0.3)
+    );
+}
+
+.collapsed {
+  right: -40%;
 }
 
 .li{
