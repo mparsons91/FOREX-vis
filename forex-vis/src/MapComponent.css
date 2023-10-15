@@ -3,23 +3,28 @@ html, body {
   overflow-x: hidden;
 }
 
+h1, h2{
+  font-weight:100;
+}
+
 .overlay-div {
   position: absolute;
-  height: 60%;
+  height: 80%;
   width: 40%;
   right: 0%;
+  top: 5%;
   float: right;
   display: flex;
   flex-direction: column;
   background: white;
   background: linear-gradient(
     to right bottom,
-    rgba(255, 255, 255, 0.5),
-    rgba(255, 255, 255, 0.3)
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.2)
     );
   padding: 20px 40px 20px 40px;
   z-index: 1;
-  border-radius: 0px 0px 20px 20px;
+  border-radius: 0px 0px 0px 20px;
   backdrop-filter: blur(8px);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
   font-family: 'Gajraj One', cursive;
@@ -30,7 +35,7 @@ html, body {
 
 .grabber-bar {
   position: absolute;
-  bottom: 2.5%;
+  top: 0%;
   left: -31px;
   width: 30px;
   height: 15%;
@@ -39,9 +44,9 @@ html, body {
   background: white;
   background: linear-gradient(
     to right bottom,
-    rgba(255, 255, 255, 0.5),
-    rgba(255, 255, 255, 0.3)
-  );
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.2)
+    );
   z-index: 2;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
   display: flex;
@@ -72,7 +77,6 @@ html, body {
 }
 
 .leaflet-bar a{
-  border-radius: 5px;
   background-color: rgba(255,255,255,0.5);
   backdrop-filter: blur(10px);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
@@ -80,6 +84,13 @@ html, body {
 
 .leaflet-interactive{
   transition: 30ms;
+}
+
+.leaflet-control-attribution {
+  padding: 10px;
+  bottom: 10px;
+  right: 10px;
+  border-radius: 25px;
 }
 
 .forexChart{
