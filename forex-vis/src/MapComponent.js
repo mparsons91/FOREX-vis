@@ -4,7 +4,7 @@ import 'leaflet/dist/leaflet.css';
 import countriesGeoJSON from './data/countries.json';
 import './MapComponent.css';
 import CandlestickChart from './components/CandlestickChart';
-// import SearchBar from './components/SearchBar';
+import SearchBar from './components/SearchBar';
 import CountryDesc from './components/CountryDesc';
 
 import {Icon} from 'leaflet'
@@ -63,7 +63,7 @@ const MapComponent = () => {
   return (
     <div style={{ position: 'relative', width: '100vw', height: '100vh' }}>
       <div className={"searchbar"}>
-        {/* <SearchBar /> */}
+        <SearchBar toggleCountrySelection={toggleCountrySelection}/>
 
       </div>
       <div className={overlayClass}>
