@@ -1,0 +1,21 @@
+
+
+.countryModal{
+    position: absolute;
+    font-family: 'Gajraj One', cursive;
+    font-family: 'Roboto', sans-serif;
+    width: 200px;
+    height: auto;
+    background: white;
+    background: linear-gradient(
+      to right bottom,
+      rgba(255, 255, 255, 0.3),
+      rgba(255, 255, 255, 0.2)
+      );
+    padding: 10px 20px 10px 20px;
+    z-index: 1;
+    border-radius: 1rem;
+    backdrop-filter: blur(8px);
+    border: 0.5px solid rgb(73, 73, 73); 
+    z-index: 1000;
+}

@@ -4,6 +4,9 @@ import 'leaflet/dist/leaflet.css';
 import countriesGeoJSON from './data/countries.json';
 import './MapComponent.css';
 import CandlestickChart from './components/CandlestickChart';
+// import SearchBar from './components/SearchBar';
+import CountryDesc from './components/CountryDesc';
+
 import {Icon} from 'leaflet'
 
 const MapComponent = () => {
@@ -11,12 +14,14 @@ const MapComponent = () => {
   const [hoveredCountry, setHoveredCountry] = useState(null);
   const [isOverlayCollapsed, setIsOverlayCollapsed] = useState(false);
   const [lineCoordinates, setLineCoordinates] = useState([]);
+  const [hoveredCountryCoords, setHoveredCountryCoords] = useState(null);
+
 
   const geoJSONStyle = (feature) => {
     const countryName = feature.properties.NAME;
     const isSelected = selectedCountries.includes(countryName);
     const isHovered = countryName === hoveredCountry;
-
+    
     return {
       fillColor: isSelected ? '#127200' : isHovered ? '#6AB05C' : 'green',
       weight: 1,
@@ -39,7 +44,8 @@ const MapComponent = () => {
     });
   };
 
-  const handleCountryHover = (countryName) => {
+  const handleCountryHover = (countryName, event) => {
+    setHoveredCountryCoords(event.containerPoint)
     setHoveredCountry(countryName);
   };
 
@@ -56,6 +62,10 @@ const MapComponent = () => {
 
   return (
     <div style={{ position: 'relative', width: '100vw', height: '100vh' }}>
+      <div className={"searchbar"}>
+        {/* <SearchBar /> */}
+
+      </div>
       <div className={overlayClass}>
         <div className='grabber-bar' onClick={toggleOverlay}>
           {grabberText}
@@ -81,7 +91,9 @@ const MapComponent = () => {
             const countryName = feature.properties.NAME;
             layer.on({
               click: () => toggleCountrySelection(countryName),
-              mouseover: () => handleCountryHover(countryName),
+              mouseover: (event) => {
+                handleCountryHover(countryName, event);
+              },
               mouseout: handleCountryMouseOut,
             });
           }}
@@ -90,6 +102,9 @@ const MapComponent = () => {
           setLineCoordinates={setLineCoordinates}
           lineCoordinates={lineCoordinates}
         />
+        isHovered && {
+          <CountryDesc hoveredOver = {hoveredCountry} coords={hoveredCountryCoords}/>
+        }
       </MapContainer>
     </div>
   );
