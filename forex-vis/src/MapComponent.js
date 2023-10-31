@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { MapContainer, TileLayer, GeoJSON, Polyline, Marker, useMap } from 'react-leaflet';
+import React, { useState, useEffect } from 'react';
+import { MapContainer, TileLayer, GeoJSON, Polyline, Marker } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import countriesGeoJSON from './data/countries.json';
+import countryCenters from './data/CountryCenters';
 import './MapComponent.css';
 import CandlestickChart from './components/CandlestickChart';
 import SearchBar from './components/SearchBar';
@@ -13,9 +14,7 @@ const MapComponent = () => {
   const [selectedCountries, setSelectedCountries] = useState([]);
   const [hoveredCountry, setHoveredCountry] = useState(null);
   const [isOverlayCollapsed, setIsOverlayCollapsed] = useState(false);
-  const [lineCoordinates, setLineCoordinates] = useState([]);
   const [hoveredCountryCoords, setHoveredCountryCoords] = useState(null);
-
 
   const geoJSONStyle = (feature) => {
     const countryName = feature.properties.NAME;
@@ -64,7 +63,6 @@ const MapComponent = () => {
     <div style={{ position: 'relative', width: '100vw', height: '100vh' }}>
       <div className={"searchbar"}>
         <SearchBar toggleCountrySelection={toggleCountrySelection}/>
-
       </div>
       <div className={overlayClass}>
         <div className='grabber-bar' onClick={toggleOverlay}>
@@ -99,8 +97,8 @@ const MapComponent = () => {
           }}
         />
         <CustomPolyline
-          setLineCoordinates={setLineCoordinates}
-          lineCoordinates={lineCoordinates}
+          selectedCountries={selectedCountries}
+          countryCenters={countryCenters}
         />
         isHovered && {
           <CountryDesc hoveredOver = {hoveredCountry} coords={hoveredCountryCoords}/>
@@ -110,29 +108,33 @@ const MapComponent = () => {
   );
 };
 
-const CustomPolyline = ({ setLineCoordinates, lineCoordinates }) => {
-  const map = useMap();
+const CustomPolyline = ({ selectedCountries, countryCenters }) => {
+  const [lineCoordinates, setLineCoordinates] = React.useState([]);
 
-  const handleMapClick = (e) => {
-    const { lat, lng } = e.latlng;
-    if (lineCoordinates.length === 0) {
-      setLineCoordinates([lat, lng]);
-    } else if (lineCoordinates.length === 2) {
-      setLineCoordinates([...lineCoordinates, lat, lng]);
+  useEffect(() => {
+    if (selectedCountries.length === 2) {
+
+      // important to keep in mind: the country-centers csv has it listed in long-lat, we need lat-long
+      // get center coords for selected countries
+      const country1Center = countryCenters[selectedCountries[0]];
+      const country2Center = countryCenters[selectedCountries[1]];
+
+      if (country1Center && country2Center) {
+        setLineCoordinates([country1Center, country2Center]);
+      }
+
     } else {
-      setLineCoordinates([lineCoordinates[2], lineCoordinates[3], lat, lng]);
+      setLineCoordinates([]);
     }
-  };
-
-  map.on('click', handleMapClick);
+  }, [selectedCountries, countryCenters]);
 
   return (
     <>
-      {lineCoordinates.length === 4 && (
+      {lineCoordinates.length === 2 && (
         <>
-          <Marker position={[lineCoordinates[0], lineCoordinates[1]]} icon={new Icon({iconUrl: require('./icons/pushpin.png'), iconSize: [24, 52], iconAnchor: [12, 48]})}/>
-          <Marker position={[lineCoordinates[2], lineCoordinates[3]]} icon={new Icon({iconUrl: require('./icons/pushpin.png'), iconSize: [24, 52], iconAnchor: [12, 48]})}/>
-          <Polyline positions={[[lineCoordinates[0], lineCoordinates[1]], [lineCoordinates[2], lineCoordinates[3]]]} color="red" className="polyline-shadow" />
+          <Marker position={lineCoordinates[0]} icon={new Icon({iconUrl: require('./icons/pushpin.png'), iconSize: [24, 52], iconAnchor: [12, 48]})}/>
+          <Marker position={lineCoordinates[1]} icon={new Icon({iconUrl: require('./icons/pushpin.png'), iconSize: [24, 52], iconAnchor: [12, 48]})}/>
+          <Polyline positions={lineCoordinates} color="red" className="polyline-shadow" />
         </>
       )}
     </>

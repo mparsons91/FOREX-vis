@@ -3,11 +3,11 @@ import './SearchBar.css';
 
 const SearchBar = (props) => {
   const [searchValue, setSearchValue] = useState('');
-  console.log(props);
+  //console.log(props);
 
   const handleSearch = () => {
     props.toggleCountrySelection(searchValue);
-    console.log(searchValue);
+    //console.log(searchValue);
     setSearchValue(''); // Clear the input box after searching
   };
 
