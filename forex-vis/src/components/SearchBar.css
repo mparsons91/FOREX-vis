@@ -17,7 +17,7 @@ input{
       rgba(255, 255, 255, 0.2)
       );
     padding-left: 20px;
-
+    transition: 300ms;
 }
 
 .searchButton{
@@ -33,4 +33,9 @@ input{
     height: 25px;
     margin-top: -100px;
     background-color: red;
+}
+
+input:hover{
+    background: white;
+    
 }

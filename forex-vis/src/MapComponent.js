@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { MapContainer, TileLayer, GeoJSON, Polyline, Marker } from 'react-leaflet';
+import React, { useState } from 'react';
+import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import countriesGeoJSON from './data/countries.json';
 import countryCenters from './data/CountryCenters';
@@ -7,8 +7,7 @@ import './MapComponent.css';
 import CandlestickChart from './components/CandlestickChart';
 import SearchBar from './components/SearchBar';
 import CountryDesc from './components/CountryDesc';
-
-import {Icon} from 'leaflet'
+import CustomPolyline from './components/CustomPolyline';
 
 const MapComponent = () => {
   const [selectedCountries, setSelectedCountries] = useState([]);
@@ -79,7 +78,7 @@ const MapComponent = () => {
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          minZoom={3}
+          minZoom={2}
           maxZoom={4}
         />
         <GeoJSON
@@ -105,39 +104,6 @@ const MapComponent = () => {
         }
       </MapContainer>
     </div>
-  );
-};
-
-const CustomPolyline = ({ selectedCountries, countryCenters }) => {
-  const [lineCoordinates, setLineCoordinates] = React.useState([]);
-
-  useEffect(() => {
-    if (selectedCountries.length === 2) {
-
-      // important to keep in mind: the country-centers csv has it listed in long-lat, we need lat-long
-      // get center coords for selected countries
-      const country1Center = countryCenters[selectedCountries[0]];
-      const country2Center = countryCenters[selectedCountries[1]];
-
-      if (country1Center && country2Center) {
-        setLineCoordinates([country1Center, country2Center]);
-      }
-
-    } else {
-      setLineCoordinates([]);
-    }
-  }, [selectedCountries, countryCenters]);
-
-  return (
-    <>
-      {lineCoordinates.length === 2 && (
-        <>
-          <Marker position={lineCoordinates[0]} icon={new Icon({iconUrl: require('./icons/pushpin.png'), iconSize: [24, 52], iconAnchor: [12, 48]})}/>
-          <Marker position={lineCoordinates[1]} icon={new Icon({iconUrl: require('./icons/pushpin.png'), iconSize: [24, 52], iconAnchor: [12, 48]})}/>
-          <Polyline positions={lineCoordinates} color="red" className="polyline-shadow" />
-        </>
-      )}
-    </>
   );
 };
 

@@ -1,22 +1,21 @@
-
-
-.countryModal{
-    position: absolute;
-    font-family: 'Gajraj One', cursive;
-    font-family: 'Roboto', sans-serif;
-    width: 150px;
-    height: auto;
-    background: white;
-    background: linear-gradient(
-      to right bottom,
-      rgba(255, 255, 255, 0.3),
-      rgba(255, 255, 255, 0.2)
-      );
-    padding: 10px;
-    border-radius: 1rem;
-    backdrop-filter: blur(8px);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
-    z-index: 1000;
-    text-align: center;
-    font-size: 8px;
+.countryModal {
+  position: absolute;
+  font-family: 'Gajraj One', cursive;
+  font-family: 'Roboto', sans-serif;
+  width: 150px;
+  height: auto;
+  background: white;
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.2)
+  );
+  padding: 10px;
+  border-radius: 1rem;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+  text-align: center;
+  font-size: 8px;
+  pointer-events: none;
 }
