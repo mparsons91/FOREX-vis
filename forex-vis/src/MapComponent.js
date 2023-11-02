@@ -60,26 +60,24 @@ const MapComponent = () => {
 
   return (
     <div style={{ position: 'relative', width: '100vw', height: '100vh' }}>
-      <div className={"searchbar"}>
-        <SearchBar toggleCountrySelection={toggleCountrySelection}/>
-      </div>
-      <div className={overlayClass}>
-        <div className='grabber-bar' onClick={toggleOverlay}>
-          {grabberText}
-        </div>
-        <h1>Foreign Exchange Visualization</h1>
-        <h2>Showing foreign exchange data for:</h2>
-        {selectedCountries.map((country, index) => (
-          <li key={country}>{country}</li>
-        ))}
-        <CandlestickChart />
-      </div>
+    <div className={overlayClass}>
+      <div className='grabber-bar' onClick={toggleOverlay}>{grabberText}</div>
+      <h1>Foreign Exchange Visualization</h1>
+      {selectedCountries.length !== 2 ? (
+        <h2>Choose two countries to begin analyzing foreign exchange data<div className={"searchbar"}><SearchBar toggleCountrySelection={toggleCountrySelection}/></div></h2>) : (
+        <>
+          <h2>Showing foreign exchange data between <strong>{selectedCountries[0]}</strong> and <strong>{selectedCountries[1]}</strong></h2>
+          <CandlestickChart/>
+          <div className={"searchbar"}><SearchBar toggleCountrySelection={toggleCountrySelection}/></div>
+        </>
+      )}
+    </div>
       <MapContainer center={[35, 25]} zoom={3} style={{ width: '100%', height: '100%', zIndex: 0 }}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           minZoom={2}
-          maxZoom={4}
+          maxZoom={8}
         />
         <GeoJSON
           data={countriesGeoJSON}

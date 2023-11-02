@@ -1,10 +1,8 @@
 .searchWrapper{
-    position: absolute;
     width: 100%;
     height: auto;
-    text-align: center;
     z-index: 1000;
-    padding-top: 10px;
+    padding-top: 30px;
 }
 input{
     height: 2.8rem;

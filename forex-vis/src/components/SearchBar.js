@@ -35,11 +35,12 @@ const SearchBar = (props) => {
       <div className="searchBar">
         <input
           className="searchBox"
-          placeholder="ENTER COUNTRY"
+          placeholder="Search Countries"
           value={searchValue}
           onChange={handleInputChange}
           onKeyDown={handleKeyPress}
         />
+        
       </div>
     </div>
   );

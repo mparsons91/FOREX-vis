@@ -9,7 +9,6 @@ h1, h2{
 
 .overlay-div {
   position: absolute;
-  height: 80%;
   width: 40%;
   right: 0%;
   top: 5%;
@@ -38,7 +37,7 @@ h1, h2{
   top: 0%;
   left: -31px;
   width: 30px;
-  height: 15%;
+  height: 150px;
   border-radius: 20px 0px 0px 20px;
   cursor: pointer;
   background: white;
@@ -102,6 +101,10 @@ h1, h2{
 /* the transition is adding lag  */
 .leaflet-interactive:not(.custom-polyline){
   /*transition: 100ms;*/
+}
+
+li{
+  font-size: 20px;
 }
 
 
