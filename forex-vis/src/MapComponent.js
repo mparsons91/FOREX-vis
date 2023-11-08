@@ -9,6 +9,7 @@ import SearchBar from './components/SearchBar';
 import CountryDesc from './components/CountryDesc';
 import CustomPolyline from './components/CustomPolyline';
 
+
 const MapComponent = () => {
   const [selectedCountries, setSelectedCountries] = useState([]);
   const [hoveredCountry, setHoveredCountry] = useState(null);
@@ -19,7 +20,6 @@ const MapComponent = () => {
     const countryName = feature.properties.NAME;
     const isSelected = selectedCountries.includes(countryName);
     const isHovered = countryName === hoveredCountry;
-    
     return {
       fillColor: isSelected ? '#127200' : isHovered ? '#6AB05C' : 'green',
       weight: 1,

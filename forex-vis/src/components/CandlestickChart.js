@@ -28,10 +28,10 @@ const CandlestickChart = (props) => {
   useEffect(() => {
     const parseCSVData = (data) => {
       return data.map((row) => {
-        const [timestamp, open, close, high, low] = row;
+        const [timestamp, low, high, open, close] = row;
         return {
           x: new Date(timestamp).getTime(),
-          y: [parseFloat(open), parseFloat(high), parseFloat(low), parseFloat(close)],
+          y: [parseFloat(low), parseFloat(high), parseFloat(open), parseFloat(close)],
         };
       });
     };
