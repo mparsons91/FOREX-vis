@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
+import CountryNames from '../data/CountryNames.json';
 import './SearchBar.css';
 
 const SearchBar = (props) => {
   const [searchValue, setSearchValue] = useState('');
-  //console.log(props);
 
   const handleSearch = () => {
     props.toggleCountrySelection(searchValue);
-    //console.log(searchValue);
-    setSearchValue(''); // Clear the input box after searching
+    setSearchValue('');
   };
 
   const capitalizeFirstLetter = (str) => {
@@ -35,12 +34,17 @@ const SearchBar = (props) => {
       <div className="searchBar">
         <input
           className="searchBox"
+          list="countryList"
           placeholder="Search Countries"
           value={searchValue}
           onChange={handleInputChange}
           onKeyDown={handleKeyPress}
         />
-        
+        <datalist id="countryList">
+          {CountryNames.map((country) => (
+            <option key={country.id} value={country.text} />
+          ))}
+        </datalist>
       </div>
     </div>
   );
