@@ -15,7 +15,7 @@ const MapComponent = () => {
   const [hoveredCountry, setHoveredCountry] = useState(null);
   const [isOverlayCollapsed, setIsOverlayCollapsed] = useState(false);
   const [hoveredCountryCoords, setHoveredCountryCoords] = useState(null);
-
+  const isHovered = false;
   const geoJSONStyle = (feature) => {
     const countryName = feature.properties.NAME;
     const isSelected = selectedCountries.includes(countryName);
@@ -97,9 +97,9 @@ const MapComponent = () => {
           selectedCountries={selectedCountries}
           countryCenters={countryCenters}
         />
-        isHovered && {
+        {isHovered && (
           <CountryDesc hoveredOver = {hoveredCountry} coords={hoveredCountryCoords}/>
-        }
+        )}
       </MapContainer>
     </div>
   );
