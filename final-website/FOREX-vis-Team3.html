@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+<h1>Foreign Exchange Data Visualization</h1>
+<p>Team 3 - Matthew Parsons, Rostam Boroumand Rad, Smit Patne, Seung Min Lee, Tristan Galcik</p>
+
+<h2>Abstract</h2>
+<p>write an abstract here<p>
+
+<h2>I. Introduction</h2>
+<h3>I.I. Domain and Project Motivation</h3>
+<p>Our team has decided to focus a project around foreign exchange (FOREX) currency data, with an emphasis on historical data. Many paid services exist that allow those dealing in forex trading to analyze current data and to aid in market predictions, but we think there may be value in visualizing the data with a map to cater towards a new audience. A typical user of our vis would be beginner forex traders, people who have families in other countries, currency collector, and anyone who is traveling to another country. Some questions the viewer may be able to answer from visualizations of this data are:
+Which countries have stable/volatile currency exchange rates?
+Which trade commodities in a given country have more direct influence over the currency exchange rates?
+How has the relative value of a given nations' currency changed over time on the world stage? With a specific country/countries?
+Thus, our users can be grouped into two categories. One category is comprised of those who hold a certain level of knowledge and familiarity with FOREX currency data or what they want to do with the currency data. For example, people who want to send money to family in other countries know that they must find the exchange rate between their country and their family’s country. These users would perform a query using our visualization tool, more specifically, they would identify the feature of the data which is the exchange rate between the two countries. These users might not have all of the necessary information, but they generally know what they want the result of their use of the visualization to look like. Our second category of users are those who are generally new to FOREX in the context of stocks trading and do not fully understand the data or how to query it. Their lack of knowledge and familiarity means that they do not know how to classify and digest the information provided by the raw data, so they are most likely interested in searching the data, more specifically, browsing and exploring trends and outliers. They are not particularly interested in granular data, but rather they’re interested in trends as this indicates a mindshare or a general sentiment among the denizens of this field. In other words, their primary goal is to just get started utilizing this data, not necessarily making the most strategic decisions.
+For our more advanced group, they want to be able to see the result of their specific search. Thus, our visualizations must accommodate that through their structure; our map visualization needs to allow users to search the FOREX currency rate between any two countries. Fundamentally, we want our visualization to be interactive because the data can be viewed on multiple spectrums: large trends to minute details, FOREX currency data of all countries versus the exchange rate between two specific countries, FOREX currency data normalized in reference to a specific country versus the FOREX currency data relative to two countries. The ways in which the data can be viewed is not one size fits all and by providing an interactive interface to our visualizations, we allow for an intuitive and customizable user experience. 
+</p>
+
+<h3>I.II. Data</h3>
+<p>There are many data sets out there that collect and archive FOREX ticker data. Our team anticipates the biggest hurdle will be obtaining data in a workable format and one that is not a paid service API. The first confirmed free source [1] is from this site: HistData.com. The dataset type is a table, where the attributes are date (ordinal), time (ordinal), open price (quantitative), high price (quantitative), low price (quantitative), closing price (quantitative), and volume (quantitative). Our stretch-goal would be to use this data, that is traditionally used granularly for brokerage trading and profit making, and change the lens to looking for geopolitical trends or diplomacy. The main limitation in regards to this stretch goal is the fact that our data is historical, thus introducing large amounts of potential variance in cases where currencies undergo drastic changes due to factors such as hyperinflation and longstanding currencies.
+
+Currently, our data is discrete with each item in our dataset being a collection of information at a specific moment in time. This works computationally, but visually, frequently changing visual characteristics depending on which bin a certain numerical characteristic falls under will make for a jarring presentation, especially at the minute-by-minute scale of information we are working with. Thus, to have smooth transitions for identity channels like color and size, we will need to abstract the discrete data into a continuous dataset that we can then use to calculate values for things like color or size. Instead of using predetermined bins to map forex ratios to certain colors, we can instead assign a spectrum of colors by creating a continuous representation of the data that can gradually transition from one discrete data point to another. In terms of a concrete transformation, one thing we could do to create a continuous representation of the data is calculate the slope between each pre-existing data point, allowing us to approximate the value at any given point in time. Then, we can map this function to a color picking function with higher value inputs returning more salient colors and lower value inputs returning less salient colors.
+</p>
+ 
+<h3>I.III. Project Contributions</h3>
+<p>The intention of this project is to provide the user with a front end graphical interface that will allow them to be able to interact with their desired foreign exchange trading data.  The prepared visualizations will be able to display a world map where the user will be able to interact with the different countries to compare conversion rates for the two chosen countries.  There are several potential technologies being weighed by the team at the moment, so the exact implementation is not yet clear (some frontrunner options are Python geo libraries, React modules or D3 to render a map), however the mode of access for the user will be in their web browser of choice as the service will be hosted online.  This is subject to change as visualizations are developed, data limitations are discovered and inspiration strikes.  One key feature of this project is to allow users to ask geographical questions about their foreign exchange rates, therefore visualizations will need to (at least in part) incorporate the Earth in some way, some form of map. The hope is that by allowing users to see geographical connections between the currency pair they have selected, they can gain a greater context for possible price fluctuations.  This also would doubly serve as the mechanism for users to select a new currency pair to analyze by allowing them to click directly on countries on their map. Additionally, options open for the map to have visual queues to alert users to a currency pair that is experiencing some form of indicator that market movement will happen. This would be useful because even if that user is not actively watching a particular pair chart, their attention can be gained and they can click on to that specific pair from being alerted. One initial idea for this alert is to have a country pair flash, blink or glow on the ma p. This is one example of some of the possibilities that open up by including a graphical map as a core part of the user interface.
+</p>
+
+<h2>II. Related Works</h2>
+<p>Both before and during the implementation of our project, we researched and referenced several related works that would eventually
+inspire further developments within our final visualization. Below are several of these works which contributed the most towards our
+resulting FOREX visualization.</p>
+<h3>II.I. Flight Paths Map Visualization</h3>
+<img src="images/related-1.png" alt="Flight Paths Map Visualization" width="500">
+<p>[2] Categorizing Flight Paths using Data Visualization and Clustering Methodologies.</p>
+<p>This visualization, and specifically this image depicting flight paths within the United States, is reflective of the map view of our visualization (as of the beta release). The primary similarities are seen in both the lines being drawn on top of the map as well as the sidebar overlay on the left edge of the screen. Within each of these general similarities are details that distinguish this visualization from ours, however. Visible in the image is the fact that the lines are not just straight lines connecting two points (as in our vis), but are actually visualizing the flight routes. Due to the nature of our dataset being non-geographic, there isn’t any need to consider the line’s shape besides for aesthetic purposes. Additionally, the lines are encoded using color hue, likely to indicate flight direction. In our visualization, we do not change the line color, although there is potential for future releases to adjust it based on the exchange rate between two selected countries’ currencies. The sidebar overlay seen in the image is very similar to our current implementation as well, with charts giving details based on the two airports being inspected. The main difference here is that we only plan to show one chart at a time in an attempt to reduce cognitive load for our target user, a beginner FOREX trader. One thing we plan to implement that’s present in this part of the image is playback controls for the charts, seen in the form of play and pause buttons above each chart. For our visualization, we aim to implement a play/pause button along with a scrubber bar to allow the user to skip through the animation. Overall, this visualization contains a surprising amount of similarities to what we’ve implemented thus far, and contains a few details that could inspire further developments within our visualization.
+</p>
+
+<h2>III. Implementation</h2>
+<p>blablabla<p>
+
+<h2>IV. Results</h2>
+<p>blablabla<p>
+<p>Code for our final visualization is available on <a href="https://github.com/tgalcik1/FOREX-vis">Github.</a></p>
+<iframe src="http://localhost:3000/" title="FOREX Visualization" width="1000vw" height="740vh"></iframe>
+
+<h2>V. Future Directions</h2>
+<p>Moving forward, there are several promising avenues for the enhancement and expansion of our forex data visualization project. Firstly, integrating machine learning algorithms into the system could enable predictive analytics, allowing users to anticipate forex trends and make more informed decisions. Additionally, incorporating real-time data feeds and advanced analytics tools can provide users with up-to-the-minute insights, ensuring the relevance and accuracy of the displayed information.</p>
+
+<p>Furthermore, expanding the geographical scope of the project to include a more comprehensive set of countries and regions could offer a broader understanding of global forex dynamics. Collaborating with financial experts and economists to incorporate additional economic indicators and contextual data could also enrich the analytical capabilities of the visualization tool, providing users with a more holistic view of the factors influencing forex relationships.</p>
+
+<p>In the realm of user experience, exploring virtual reality (VR) or augmented reality (AR) applications could revolutionize how users interact with and perceive forex data, offering an immersive and intuitive experience. Additionally, ensuring compatibility with various devices and platforms can enhance accessibility and user adoption.
+We would want to make the application run on real-time data as our current version is operating on saved historical data. This would obviously make it more useful for users who are interested in present-day data and want to make decisions based on analyses and visualizations of said data.</p>
+
+<p>By addressing these future directions, our research project has the potential to evolve into a more sophisticated and comprehensive tool, empowering users with advanced analytics, real-time insights, and an enriched understanding of the complex dynamics inherent in the forex market.</p>
+
+<h2>References</h2>
+<p>[1] Free Forex Historical Data, HistData, May 2020. https://www.histdata.com/download-free-forex-data/?/metatrader/1-minute-bar-quotes </p>
+<p>[2] Y. Song, K. Yu, and S. Young. (2020). “Categorizing Flight Paths using Data Visualization and Clustering Methodologies.” Presented at ICRAT 2020. [Online]. Available: https://arxiv.org/ftp/arxiv/papers/2310/2310.00773.pdf </p>
+<p>[3] Leaflet. (2023). Volodymyr Agafonkin. Available: https://leafletjs.com/</p>
+<p>[4] D3. (2023). Mike Bostock and Observable, Inc. Available: https://d3js.org/</p>
+<p>[5] World Borders Dataset, B. Sandvik, 2009. https://thematicmapping.org/downloads/world_borders.php</p>
+<p>[6] World Countries Centroids, G. Rehkemper, September 22, 2022. https://gavinr.com/open-data/world-countries-centroids/</p>
+
+</body>
+</html>
