@@ -8,8 +8,12 @@
 <h1>Foreign Exchange Data Visualization</h1>
 <p>Team 3 - Matthew Parsons, Rostam Boroumand Rad, Smit Patne, Seung Min Lee, Tristan Galcik</p>
 
+<hr>
+
 <h2>Abstract</h2>
 <p>write an abstract here<p>
+
+<hr>
 
 <h2>I. Introduction</h2>
 <h3>I.I. Domain and Project Motivation</h3>
@@ -31,6 +35,8 @@ Currently, our data is discrete with each item in our dataset being a collection
 <p>The intention of this project is to provide the user with a front end graphical interface that will allow them to be able to interact with their desired foreign exchange trading data.  The prepared visualizations will be able to display a world map where the user will be able to interact with the different countries to compare conversion rates for the two chosen countries.  There are several potential technologies being weighed by the team at the moment, so the exact implementation is not yet clear (some frontrunner options are Python geo libraries, React modules or D3 to render a map), however the mode of access for the user will be in their web browser of choice as the service will be hosted online.  This is subject to change as visualizations are developed, data limitations are discovered and inspiration strikes.  One key feature of this project is to allow users to ask geographical questions about their foreign exchange rates, therefore visualizations will need to (at least in part) incorporate the Earth in some way, some form of map. The hope is that by allowing users to see geographical connections between the currency pair they have selected, they can gain a greater context for possible price fluctuations.  This also would doubly serve as the mechanism for users to select a new currency pair to analyze by allowing them to click directly on countries on their map. Additionally, options open for the map to have visual queues to alert users to a currency pair that is experiencing some form of indicator that market movement will happen. This would be useful because even if that user is not actively watching a particular pair chart, their attention can be gained and they can click on to that specific pair from being alerted. One initial idea for this alert is to have a country pair flash, blink or glow on the ma p. This is one example of some of the possibilities that open up by including a graphical map as a core part of the user interface.
 </p>
 
+<hr>
+
 <h2>II. Related Works</h2>
 <p>Both before and during the implementation of our project, we researched and referenced several related works that would eventually
 inspire further developments within our final visualization. Below are several of these works which contributed the most towards our
@@ -41,13 +47,32 @@ resulting FOREX visualization.</p>
 <p>This visualization, and specifically this image depicting flight paths within the United States, is reflective of the map view of our visualization (as of the beta release). The primary similarities are seen in both the lines being drawn on top of the map as well as the sidebar overlay on the left edge of the screen. Within each of these general similarities are details that distinguish this visualization from ours, however. Visible in the image is the fact that the lines are not just straight lines connecting two points (as in our vis), but are actually visualizing the flight routes. Due to the nature of our dataset being non-geographic, there isn’t any need to consider the line’s shape besides for aesthetic purposes. Additionally, the lines are encoded using color hue, likely to indicate flight direction. In our visualization, we do not change the line color, although there is potential for future releases to adjust it based on the exchange rate between two selected countries’ currencies. The sidebar overlay seen in the image is very similar to our current implementation as well, with charts giving details based on the two airports being inspected. The main difference here is that we only plan to show one chart at a time in an attempt to reduce cognitive load for our target user, a beginner FOREX trader. One thing we plan to implement that’s present in this part of the image is playback controls for the charts, seen in the form of play and pause buttons above each chart. For our visualization, we aim to implement a play/pause button along with a scrubber bar to allow the user to skip through the animation. Overall, this visualization contains a surprising amount of similarities to what we’ve implemented thus far, and contains a few details that could inspire further developments within our visualization.
 </p>
 
+<hr>
+
 <h2>III. Implementation</h2>
-<p>blablabla<p>
+<p>(iterate on text below)</p>
+<p>We manually downloaded csv files from histdata.com.</p>
+<p>We transformed the original csv files into more granular/specific csv files where single fields were split into multiple subfields. For example, the original csv files had the timestamp as a single field, but we split it up into its individual components (i.e., year, month, day, hour, minute, second).</p>
+<p>We transformed our parsed csv files into json files to embed data directly into the website. This would allow our viz to work without an accompanying database.</p>
+<p>We have two potential software architectures for our viz. Our first one will be a traditional server-client architecture where our web app communicates with our local data. Our second one will be a static site architecture where the data is embedded directly into the site and the web application does not perform networking.</p>
+
+<hr>
 
 <h2>IV. Results</h2>
-<p>blablabla<p>
+<p></p>
+<h3>IV.I. Interaction/Animation</h3>
+<p></p>
+
+<h3>IV.II. Transformation</h3>
+<p></p>
+
+<h3>IV.III. Color</h3>
+<p></p>
+
 <p>Code for our final visualization is available on <a href="https://github.com/tgalcik1/FOREX-vis">Github.</a></p>
 <iframe src="http://localhost:3000/" title="FOREX Visualization" width="1000vw" height="740vh"></iframe>
+
+<hr>
 
 <h2>V. Future Directions</h2>
 <p>Moving forward, there are several promising avenues for the enhancement and expansion of our forex data visualization project. Firstly, integrating machine learning algorithms into the system could enable predictive analytics, allowing users to anticipate forex trends and make more informed decisions. Additionally, incorporating real-time data feeds and advanced analytics tools can provide users with up-to-the-minute insights, ensuring the relevance and accuracy of the displayed information.</p>
@@ -58,6 +83,8 @@ resulting FOREX visualization.</p>
 We would want to make the application run on real-time data as our current version is operating on saved historical data. This would obviously make it more useful for users who are interested in present-day data and want to make decisions based on analyses and visualizations of said data.</p>
 
 <p>By addressing these future directions, our research project has the potential to evolve into a more sophisticated and comprehensive tool, empowering users with advanced analytics, real-time insights, and an enriched understanding of the complex dynamics inherent in the forex market.</p>
+
+<hr>
 
 <h2>References</h2>
 <p>[1] Free Forex Historical Data, HistData, May 2020. https://www.histdata.com/download-free-forex-data/?/metatrader/1-minute-bar-quotes </p>
