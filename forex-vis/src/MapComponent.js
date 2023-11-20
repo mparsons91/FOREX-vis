@@ -38,7 +38,7 @@ const MapComponent = () => {
       } else if (prevSelectedCountries.length < 2) {
         return [...prevSelectedCountries, countryName];
       } else {
-        return [prevSelectedCountries[1], countryName];
+        return [prevSelectedCountries[0], countryName];
       }
     });
   };
