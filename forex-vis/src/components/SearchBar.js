@@ -4,6 +4,7 @@ import CountryNames from '../data/CountryNames.json';
 import './SearchBar.css';
 
 const SearchBar = (props) => {
+<<<<<<< HEAD
   const [searchValue, setSearchValue] = useState('');
   const [searchHistory, setSearchHistory] = useState([]);
   const [selectedCountries, setSelectedCountries] = useState([]);
@@ -21,26 +22,38 @@ const SearchBar = (props) => {
 
     setSearchValue('');
   };
+=======
+    const [searchValue, setSearchValue] = useState('');
+    const [searchHistory, setSearchHistory] = useState([]);
 
-  const capitalizeFirstLetter = (str) => {
-    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
-  };
+    const handleSearch = () => {
+        props.toggleCountrySelection(searchValue);
+        setSearchValue('');
+        updateSearchHistory(searchValue);
+    };
+>>>>>>> 202e2397df055fe988ad00995c43848a060e1b8e
 
-  const handleInputChange = (event) => {
-    const inputValue = event.target.value;
-    const capitalizedInput = inputValue
-      .split(' ')
-      .map(capitalizeFirstLetter)
-      .join(' ');
-    setSearchValue(capitalizedInput);
-  };
+    const updateSearchHistory = (value) => {
+        // Avoid adding duplicates to the search history
+        if (!searchHistory.includes(value)) {
+            setSearchHistory([...searchHistory, value]);
+        }
+    };
 
-  const handleKeyPress = (event) => {
-    if (event.key === 'Enter') {
-      handleSearch();
-    }
-  };
+    const capitalizeFirstLetter = (str) => {
+        return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+    };
 
+    const handleInputChange = (event) => {
+        const inputValue = event.target.value;
+        const capitalizedInput = inputValue
+            .split(' ')
+            .map(capitalizeFirstLetter)
+            .join(' ');
+        setSearchValue(capitalizedInput);
+    };
+
+<<<<<<< HEAD
   const clearSearchHistory = () => {
     setSearchHistory([]);
     setSelectedCountries([]); // Clear the selected countries
@@ -88,6 +101,51 @@ const SearchBar = (props) => {
       </div>
     </div>
   );
+=======
+    const handleKeyPress = (event) => {
+        if (event.key === 'Enter') {
+            handleSearch();
+        }
+    };
+
+    return ( <
+        div className = "searchWrapper" >
+        <
+        div className = "searchBar" >
+        <
+        input className = "searchBox"
+        list = "countryList"
+        placeholder = "Search Countries"
+        value = { searchValue }
+        onChange = { handleInputChange }
+        onKeyDown = { handleKeyPress }
+        /> <
+        datalist id = "countryList" > {
+            CountryNames.map((country) => ( <
+                option key = { country.id }
+                value = { country.text }
+                />
+            ))
+        } <
+        /datalist> < /
+        div > <
+        div className = "searchHistory" >
+        <
+        p > You have selected: < /p> <
+        ul > {
+            searchHistory.map((item, index) => ( <
+                li key = { index }
+                onClick = {
+                    () => setSearchValue(item)
+                } > { item } <
+                /li>
+            ))
+        } <
+        /ul> < /
+        div > <
+        /div>
+    );
+>>>>>>> 202e2397df055fe988ad00995c43848a060e1b8e
 };
 
 export default SearchBar;
