@@ -70,9 +70,9 @@ const MapComponent = () => {
         {selectedCountries.length !== 2 ? (
           <h2>Choose two countries to begin analyzing foreign exchange data<div className={"searchbar"}><SearchBar toggleCountrySelection={toggleCountrySelection} clearMapSelectedCountries={clearMapSelectedCountries} /></div></h2>) : (
           <>
-            <h2>Showing foreign exchange data between <strong>{selectedCountries[0]}</strong> and <strong>{selectedCountries[1]}</strong></h2>
-            <CandlestickChart/>
             <div className={"searchbar"}><SearchBar toggleCountrySelection={toggleCountrySelection} clearMapSelectedCountries={clearMapSelectedCountries} /></div>
+            <h2>Showing foreign exchange data between <strong>{selectedCountries[0]}</strong> and <strong>{selectedCountries[1]}</strong></h2>
+            <CandlestickChart/>  
           </>
         )}
       </div>

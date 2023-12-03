@@ -1,0 +1,66 @@
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    width: 82%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.speed-buttons {
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
+.speed-controls {
+    padding: 10px;
+}
+
+.navigation-button {
+    width: 40px;
+    height: 40px;
+    border: 0px;
+    border-radius: 50%;
+    padding: 0;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: white;
+    margin-left: 5px;
+}
+
+.navigation-button:hover {
+    background-color: #f0f0f0;
+}
+
+.speed-button {
+    width: 40px;
+    height: 40px;
+    border: 0px;
+    border-radius: 50%;
+    padding: 0;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: white;
+    margin-left: 5px;
+}
+
+.speed-button:hover {
+    background-color: #f0f0f0;
+}
+
+label {
+    display: flex;
+    justify-content: center;
+}
+
+#playback-slider {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+#slider {
+    width: 80%;
+}
