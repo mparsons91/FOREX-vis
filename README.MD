@@ -11,50 +11,50 @@ Link to Web App: ***TODO, ADD LINK***
 Group3_FinalRelease.zip  
 |----user_manual.pdf  
 |----backend  
-    |----README.md  
-    |----main.py  
+&emsp;|----README.md  
+&emsp;|----main.py  
 |----final-website  
-    |----index.html  
-    |----styles.css  
-    |----images  
-          |----color-1.png  
-          |----color-2.png  
-          |----interaction-3.PNG  
-          |----relate-1.png  
+&emsp;|----index.html  
+&emsp;|----styles.css  
+&emsp;|----images  
+&emsp;&emsp;|----color-1.png  
+&emsp;&emsp;|----color-2.png  
+&emsp;&emsp;|----interaction-3.PNG  
+&emsp;&emsp;|----relate-1.png  
 |forex-vis  
-    |----.gitignore  
-    |----README.md  
-    |----package-lock.json  
-    |----package.json  
-    |----public  
-          |----favicon.ico  
-          |----index.html  
-          |----logo192.png  
-          |----logo512.png  
-          |----manifest.json  
-          |----robots.txt  
-    |----src  
-        |----App.css  
-        |----App.js  
-        |----MapComponent.css  
-        |----MapComponent.js  
-        |----index.css  
-        |----index.js  
-        |----components  
-            |----CandlestickChart.css  
-            |----CandlestickChart.js  
-            |----CountryDesc.css  
-            |----CustomPolyline.js  
-            |----SearchBar.css  
-            |----SearchBar.js  
-            |----icons  
-                |----pushpin.png  
-        |----data  
-            |----CountryCenters.js  
-            |----CountryNames.json  
-            |----allCountries.json  
-            |----countries.json  
-            |----dummy_data.csv  
-        |----utility  
-            |----centerCSVtoJSobject.py  
-            |----country-centers.csv  
+&emsp;|----.gitignore  
+&emsp;|----README.md  
+&emsp;|----package-lock.json  
+&emsp;|----package.json  
+&emsp;|----public  
+&emsp;&emsp;|----favicon.ico  
+&emsp;&emsp;|----index.html  
+&emsp;&emsp;|----logo192.png  
+&emsp;&emsp;|----logo512.png  
+&emsp;&emsp;|----manifest.json  
+&emsp;&emsp;|----robots.txt  
+&emsp;|----src  
+&emsp;&emsp;|----App.css  
+&emsp;&emsp;|----App.js  
+&emsp;&emsp;|----MapComponent.css  
+&emsp;&emsp;|----MapComponent.js  
+&emsp;&emsp;|----index.css  
+&emsp;&emsp;|----index.js  
+&emsp;&emsp;|----components  
+&emsp;&emsp;&emsp;|----CandlestickChart.css  
+&emsp;&emsp;&emsp;|----CandlestickChart.js  
+&emsp;&emsp;&emsp;|----CountryDesc.css  
+&emsp;&emsp;&emsp;|----CustomPolyline.js  
+&emsp;&emsp;&emsp;|----SearchBar.css  
+&emsp;&emsp;&emsp;|----SearchBar.js  
+&emsp;&emsp;&emsp;|----icons  
+&emsp;&emsp;&emsp;&emsp;|----pushpin.png  
+&emsp;|----data  
+&emsp;&emsp;|----CountryCenters.js  
+&emsp;&emsp;|----CountryNames.json  
+&emsp;&emsp;|----allCountries.json  
+&emsp;&emsp;|----countries.json  
+&emsp;&emsp;|----dummy_data.csv  
+&emsp;|----utility  
+&emsp;&emsp;|----centerCSVtoJSobject.py  
+&emsp;&emsp;|----country-centers.csv  
