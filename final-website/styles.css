@@ -1,8 +1,30 @@
 body{
     padding: 60px 120px 60px 120px;
     font-family: 'Roboto', sans-serif;
+    background-color: beige;
+}
+.section-title1:hover{
+    color: rgb(106, 0, 255);
+}
+.section-title2:hover{
+    color: greenyellow;
+}
+.section-title3:hover{
+    color: orange;
+}
+.section-title4:hover{
+    color: green;
+}
+.section-title5:hover{
+    color: blue;
+}
+.section-title6:hover{
+    color: red;
 }
 
+.section-content{
+    border: 1px solid black;
+}
 #interaction-grid{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -43,4 +65,71 @@ body{
     width: 100%;
     max-width: 750px;
     margin: auto;
+}
+
+.button-86 {
+  all: unset;
+  width: 200px;
+  height: 30px;
+  font-size: 16px;
+  background: transparent;
+  border: none;
+  position: relative;
+  color: #f0f0f0;
+  cursor: pointer;
+  z-index: 1;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-86::after,
+.button-86::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: -99999;
+  transition: all .4s;
+}
+
+.button-86::before {
+  transform: translate(0%, 0%);
+  width: 100%;
+  height: 100%;
+  background: #28282d;
+  border-radius: 10px;
+}
+
+.button-86::after {
+  transform: translate(10px, 10px);
+  width: 35px;
+  height: 35px;
+  background: #ffffff15;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border-radius: 50px;
+}
+
+.button-86:hover::before {
+  transform: translate(5%, 20%);
+  width: 110%;
+  height: 110%;
+}
+
+.button-86:hover::after {
+  border-radius: 10px;
+  transform: translate(0, 0);
+  width: 100%;
+  height: 100%;
+}
+
+.button-86:active::after {
+  transition: 0s;
+  transform: translate(0, 5%);
 }
