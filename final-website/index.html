@@ -30,16 +30,6 @@
             margin-top: 10px;
         }
 
-        #interaction-grid,
-        #transformation-grid,
-        #color-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-
         #interaction-grid img,
         #transformation-grid img,
         #color-grid img {
@@ -78,7 +68,7 @@
     </div>
 
     <div class="section" id="related-work-section">
-        <div class="section-title2 button-86" onclick="toggleSection('related-work')">2. Related Work</div>
+        <div class="section-title2 button-86" onclick="toggleSection('related-work')">2. Related Works</div>
         <div class="section-content">
             <h2>2. Related Works</h2>
             <p>Both before and during the implementation of our project, we researched and referenced several related works that would eventually
@@ -93,7 +83,7 @@
     </div>
 
     <div class="section" id="implementation-section">
-        <div class="section-title3 button-86" onclick="toggleSection('implementation')">3. Implementation Section</div>
+        <div class="section-title3 button-86" onclick="toggleSection('implementation')">3. Implementation</div>
         <div class="section-content">
             <h2>3. Implementation</h2>
             <p>(iterate on text below)</p>
@@ -112,17 +102,19 @@
             <p></p>
             <h3>4.1. Interaction/Animation</h3>
             <div id="interaction-grid">
-                <img src="images/null" alt="Map Link Animation" width = 500>
-                <img src="images/null" alt="Animated Candlestick" width = 500>
-                <img src="images/interaction-3.PNG" alt="Search Bar" width = 500>
                 <p>Figure 4.1A</p>
                 <p>Figure 4.1B</p>
                 <p>Figure 4.1C</p>
+                <img src="images/anim-1.gif" alt="Map Link Animation" width = 300>
+                <img src="images/anim-2.gif" alt="Animated Candlestick" width = 300>
+                <img src="images/interaction-3.PNG" alt="Search Bar" width = 300>
+                <p>Figure 4.1A depicts a link that smoothly animates from one selected country on the map to a second selected country. Point marks indicate the geographic center coordinates of each selected country, with a line mark drawn between them establishing a country-country pair.</p>
+                <p>Figure 4.1B depicts a candlestick chart with hoverable tooltips and navigation utilities, including zooming and panning. Time is aligned on the horizontal axis, and the price is on the vertical axis. Line marks indicate minute-by-minute currency pair movements, with the length channel describing the difference between high and low prices (the length of narrow lines on the top and bottom of the “body”), as well as the difference between open and close prices (the top and bottom edges of the body). The hoverable tooltip provides exact values for open, low, high, and close prices for a specific mark. Color hue is used to describe positive or negative price changes. An interactable scrubber bar plays back historical data at a user-selected playback rate, with play, pause, rewind, and fast-forward buttons.</p>
+                <p>Figure 4.1C depicts a search bar that allows the user to type in a country name instead of locating and selecting it on the map. One country is searched for at a time; if two countries are already selected, the most recently selected one will be replaced. If the user enters the name of a currently selected country, it will be deselected.</p>
             </div>
-            <p>need to adopt feedback from process book below:</p>
-            <p>Throughout the implementation of our visualization, the theme of interaction has driven a large portion of the design choices we’ve made thus far. In general, we’ve used interaction to allow the user to compare two currencies at a time as opposed to viewing the entire dataset at once. As our target user is a beginner FOREX trader, we prioritized viewing a smaller subset of the dataset in order to reduce cognitive load. Figure 1c demonstrates one interactable component that contributes towards this idea, a search bar for the user to enter a country. Although the user could previously interact with the map view to select countries, we found that a search bar reduces latency in searching for a specific country, and is an essential function should the user not know the geographic location of a specific country they wish to inspect. Giving the user multiple options for interactively viewing a subset of data provides flexibility in our design.</p>
-            <p>Figure 1b shows another interactive component within our vis, the candlestick chart. One of the main interactive elements of this chart are the tooltips that appear on mouseover. By providing open, close, high, and low prices by simply hovering over the mark, latency is largely reduced as the user no longer needs to spend mental resources aligning each mark with the axes to determine its values. Additionally, providing interactive zoom and pan controls allows the user to resize and navigate the data as they see necessary.</p>
-            <p>Finally, we explored using animation in figure 1a, where the link drawn between selected countries smoothly interpolates from one coordinate to the other over time. Although it was still clear that the link indicates the selected country-country pair before implementing animation, we found that smoothly animating the link is less jarring than having it appear abruptly. A trade-off with using animation here is increased latency between the user’s input and displaying the link. We found a middle-ground by using an interpolation speed that wasn’t so slow as to drastically increase the latency, but wasn’t so fast as to be visually distracting. This solution led us to believe that the use of animation in this instance was justified and increased the effectiveness of our vis.</p>
+            <p>Throughout the implementation of our visualization, the theme of interaction has driven a large portion of the design choices we’ve made thus far. In general, we’ve used interaction to allow the user to compare two currencies at a time as opposed to viewing the entire dataset at once. As our target user is a beginner FOREX trader, we prioritized viewing a smaller subset of the dataset in order to reduce cognitive load. Figure 4.1C demonstrates one interactable component that contributes towards this idea, a search bar for the user to enter a country. Although the user could previously interact with the map view to select countries, we found that a search bar reduces latency in searching for a specific country, and is an essential function should the user not know the geographic location of a specific country they wish to inspect. Giving the user multiple options for interactively viewing a subset of data provides flexibility in our design.</p>
+            <p>Figure 4.1B shows another interactive component within our vis, the candlestick chart. One of the main interactive elements of this chart are the tooltips that appear on mouseover. By providing open, close, high, and low prices by simply hovering over the mark, latency is largely reduced as the user no longer needs to spend mental resources aligning each mark with the axes to determine its values. Additionally, providing interactive zoom and pan controls allows the user to resize and navigate the data as they see necessary. This figure also explores animation, shown by the data being rendered to the chart over time. As one of our main goals was to make FOREX data easily digestible for our targeted user (a beginner FOREX trader), playing back historical data at a speed they choose can incrementally introduce them to the data and allow them to investigate it at their own pace.</p>
+            <p>Finally, we explored using animation in figure 4.1A, where the link drawn between selected countries smoothly interpolates from one coordinate to the other over time. Although it was still clear that the link indicates the selected country-country pair before implementing animation, we found that smoothly animating the link is less jarring than having it appear abruptly. A trade-off with using animation here is increased latency between the user’s input and displaying the link. We found a middle-ground by using an interpolation speed that wasn’t so slow as to drastically increase the latency, but wasn’t so fast as to be visually distracting. This solution led us to believe that the use of animation in this instance was justified and increased the effectiveness of our vis. The link is drawn from the least recently selected country to the most recently selected country. This was done to complement the order of selection - the least recently selected country will remain selected until deselected, so it acts as an "anchor point" and stands to be the baseline country for future comparisons. The link animating outwards from the least recently selected country reinforces this "baseline country" concept for the user.</p>
             
             <h3>4.2. Transformation</h3>
             <div id="transformation-grid">
@@ -152,7 +144,7 @@
     </div>
 
     <div class="section" id="future-direction-section">
-        <div class="section-title5 button-86" onclick="toggleSection('future-direction')">5. Future Direction</div>
+        <div class="section-title5 button-86" onclick="toggleSection('future-direction')">5. Future Directions</div>
         <div class="section-content">
             <h2>5. Future Directions</h2>
             <p>Moving forward, there are several promising avenues for the enhancement and expansion of our forex data visualization project. Firstly, integrating machine learning algorithms into the system could enable predictive analytics, allowing users to anticipate forex trends and make more informed decisions. Additionally, incorporating real-time data feeds and advanced analytics tools can provide users with up-to-the-minute insights, ensuring the relevance and accuracy of the displayed information.</p>
@@ -172,7 +164,7 @@
 
     
     <div class="section" id="reference-section">
-        <div class="section-title6 button-86" onclick="toggleSection('reference')">Reference</div>
+        <div class="section-title6 button-86" onclick="toggleSection('reference')">References</div>
         <div class="section-content">
             <h2>References</h2>
             <p>[1] Free Forex Historical Data, HistData, May 2020. https://www.histdata.com/download-free-forex-data/?/metatrader/1-minute-bar-quotes</p>

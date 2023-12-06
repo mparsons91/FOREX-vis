@@ -24,13 +24,17 @@ body{
 
 .section-content{
     border: 1px solid black;
+    padding: 40px;
 }
 #interaction-grid{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
     justify-content: center;
     align-items: center;
     text-align: center;
+    background-color: #c0c0c0;
+    padding: 30px;
 }
 
 #interaction-grid img {
