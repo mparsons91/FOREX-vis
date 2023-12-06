@@ -1,0 +1,33 @@
+FOREX Visualization User Manual
+
+Setup & Installation:
+- Install node.js
+- Open the README.MD in FOREX-vis/backend, and download the data from the given link.
+- Create a new directory in FOREX-vis/backend called "data".
+- Place the downloaded data in the new FOREX-vis/backend/data.
+- Open a terminal. Starting in the root directory: 
+  - npm install react-scripts
+  - npm install react-leaflet leaflet react-apexcharts papaparse
+  - cd forex-vis
+  - npm start
+- The program will open in your browser at http://localhost:3000/.
+
+Program Usage:
+Map View
+- Select two countries to compare FOREX data, either by clicking them on the map,
+  or by typing the country name into the search bar.
+- To deselect a country, either click it again, or type in the country name again.
+- If two countries are already selected and you select a third country, the most
+  recent selection will be replaced.
+Candlestick Chart
+- The candlestick chart on the sidebar will automatically show historical playback
+  of the data. Use the pause button to stop playback, and click again to resume.
+- Skip to the beginning or end of data playback by pressing the rewind/fast-forward
+  buttons on the left and right of the pause/play button.
+- Set the playback speed multiplier using the -/+ buttons.
+- Dragging the slider will allow you to skip to a specific timestamp.
+- The top right corner of the candlestick chart contains zoom and pan controls.
+- To reset zoom and pan, click the "Home" icon.
+Misc.
+- To collapse/expand the sidebar, press the arrow button on the left edge of the overlay.
+- Refreshing the page will quickly clear selected FOREX data and start over.
