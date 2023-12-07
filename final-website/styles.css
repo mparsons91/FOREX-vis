@@ -49,11 +49,12 @@ body{
     justify-content: center;
     align-items: center;
     text-align: center;
+    background-color: #c0c0c0;
+    padding: 30px;
 }
 
 #transformation-grid img {
     width: 100%;
-    max-width: 1000px;
     margin: auto;
 }
 
@@ -63,6 +64,8 @@ body{
     justify-content: center;
     align-items: center;
     text-align: center;
+    background-color: #c0c0c0;
+    padding: 30px;
 }
 
 #color-grid img {
