@@ -68,9 +68,9 @@
     </div>
 
     <div class="section" id="related-work-section">
-        <div class="section-title2 button-86" onclick="toggleSection('related-work')">2. Related Works</div>
+        <div class="section-title2 button-86" onclick="toggleSection('related-work')">2. Related Work</div>
         <div class="section-content">
-            <h2>2. Related Works</h2>
+            <h2>2. Related Work</h2>
             <p>Both before and during the implementation of our project, we researched and referenced several related works that would eventually
             inspire further developments within our final visualization. Below are several of these works which contributed the most towards our
             resulting FOREX visualization.</p>
@@ -86,12 +86,16 @@
         <div class="section-title3 button-86" onclick="toggleSection('implementation')">3. Implementation</div>
         <div class="section-content">
             <h2>3. Implementation</h2>
-            <p>(iterate on text below)</p>
             <p>We manually downloaded csv files from histdata.com.</p>
             <p>We transformed the original csv files into more granular/specific csv files where single fields were split into multiple subfields. For example, the original csv files had the timestamp as a single field, but we split it up into its individual components (i.e., year, month, day, hour, minute, second).</p>
             <p>We transformed our parsed csv files into json files to embed data directly into the website. This would allow our viz to work without an accompanying database.</p>
             <p>We have two potential software architectures for our viz. Our first one will be a traditional server-client architecture where our web app communicates with our local data. Our second one will be a static site architecture where the data is embedded directly into the site and the web application does not perform networking.</p>
             
+            <p>We implemented our front-end web application using React [#] and wrote its code with HTML, CSS, and JavaScript. The top-level of our application contains a React component for the map view, which we leveraged Leaflet API [#] to create. 
+                Within the map view, we utilized two datasets for allowing the user to click two countries and draw a line between them. We used a World Borders Dataset [#] which contains polygons for each country's borders in conjunction with Leaflet's layering system to create clickable countries. The connecting line drawn between them is made using Leaflet's built-in Polyline component and animated using an easing function. We decided that the endpoints for the line should be the geographic center of each country; therefore, we utilized a World Countries Centroids dataset [#] to place each endpoint at the appropriate center coordinate.
+                The other core component of our application is the candlestick chart, which is encapsulated within the map component's rendering pass, making it very simple to pass the selected countries to the chart. This chart is created using ApexCharts [#], and pulls data for the user-selected countries from a JSON file at runtime. Most of the functionality for the candlestick chart is already implemented via ApexCharts, but we manually implemented the animated data playback by limiting the range of visible data based on a given timestep. One limitation/side-effect of this approach is that the chart's horizontal axis automatically resizes based on the amount of visible data instead of staying fixed; we would aim to rework this in the future in order to reduce the amount of visual movement caused by resizing during playback, hopefully reducing cognitive load for our targeted user of "beginner FOREX trader".
+                The candlestick view can be collapsed to the side, which was implemented by giving it's container a negative offset on the right edge. The point of implementing this was to allow the user to have a full and unobstructed map view while selecting countries to compare, aiding readability and usability.
+            </p>
         </div>
     </div>
 
