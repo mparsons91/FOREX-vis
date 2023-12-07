@@ -75,7 +75,7 @@
             inspire further developments within our final visualization. Below are several of these works which contributed the most towards our
             resulting FOREX visualization.</p>
             <h3>2.1. Flight Paths Map Visualization</h3>
-            <img src="images/related-1.png" alt="Flight Paths Map Visualization" width="500">
+            <img src="images/2-1.png" alt="Flight Paths Map Visualization" width="500">
             <p>[2] Categorizing Flight Paths using Data Visualization and Clustering Methodologies.</p>
             <p>This visualization, and specifically this image depicting flight paths within the United States, is reflective of the map view of our visualization (as of the beta release). The primary similarities are seen in both the lines being drawn on top of the map as well as the sidebar overlay on the left edge of the screen. Within each of these general similarities are details that distinguish this visualization from ours, however. Visible in the image is the fact that the lines are not just straight lines connecting two points (as in our vis), but are actually visualizing the flight routes. Due to the nature of our dataset being non-geographic, there isn’t any need to consider the line’s shape besides for aesthetic purposes. Additionally, the lines are encoded using color hue, likely to indicate flight direction. In our visualization, we do not change the line color, although there is potential for future releases to adjust it based on the exchange rate between two selected countries’ currencies. The sidebar overlay seen in the image is very similar to our current implementation as well, with charts giving details based on the two airports being inspected. The main difference here is that we only plan to show one chart at a time in an attempt to reduce cognitive load for our target user, a beginner FOREX trader. One thing we plan to implement that’s present in this part of the image is playback controls for the charts, seen in the form of play and pause buttons above each chart. For our visualization, we aim to implement a play/pause button along with a scrubber bar to allow the user to skip through the animation. Overall, this visualization contains a surprising amount of similarities to what we’ve implemented thus far, and contains a few details that could inspire further developments within our visualization.
             </p>
@@ -105,9 +105,9 @@
                 <p>Figure 4.1A</p>
                 <p>Figure 4.1B</p>
                 <p>Figure 4.1C</p>
-                <img src="images/anim-1.gif" alt="Map Link Animation" width = 300>
-                <img src="images/anim-2.gif" alt="Animated Candlestick" width = 300>
-                <img src="images/interaction-3.PNG" alt="Search Bar" width = 300>
+                <img src="images/4-1A.gif" alt="Map Link Animation" width = 300>
+                <img src="images/4-1B.gif" alt="Animated Candlestick" width = 300>
+                <img src="images/4-1C.PNG" alt="Search Bar" width = 300>
                 <p>Figure 4.1A depicts a link that smoothly animates from one selected country on the map to a second selected country. Point marks indicate the geographic center coordinates of each selected country, with a line mark drawn between them establishing a country-country pair.</p>
                 <p>Figure 4.1B depicts a candlestick chart with hoverable tooltips and navigation utilities, including zooming and panning. Time is aligned on the horizontal axis, and the price is on the vertical axis. Line marks indicate minute-by-minute currency pair movements, with the length channel describing the difference between high and low prices (the length of narrow lines on the top and bottom of the “body”), as well as the difference between open and close prices (the top and bottom edges of the body). The hoverable tooltip provides exact values for open, low, high, and close prices for a specific mark. Color hue is used to describe positive or negative price changes. An interactable scrubber bar plays back historical data at a user-selected playback rate, with play, pause, rewind, and fast-forward buttons.</p>
                 <p>Figure 4.1C depicts a search bar that allows the user to type in a country name instead of locating and selecting it on the map. One country is searched for at a time; if two countries are already selected, the most recently selected one will be replaced. If the user enters the name of a currently selected country, it will be deselected.</p>
@@ -119,7 +119,7 @@
             <h3>4.2. Transformation</h3>
             <div id="transformation-grid">
                 <p>Figure 4.2A</p>
-                <img src="images/transformation.png" alt="Transformation Image" width = 1000>
+                <img src="images/4-2A.png" alt="Transformation Image" width = 1000>
                 <p>Figure 4.2A once again depicts the link drawn between two selected countries.</p>
             </div>
             <p></p>
@@ -130,8 +130,8 @@
             <div id="color-grid">
                 <p>Figure 4.3A</p>
                 <p>Figure 4.3B</p>
-                <img src="images/color-1.png" alt="Color - Map View" width = 500>
-                <img src="images/color-2.png" alt="Color - Candlestick Chart" width = 500>
+                <img src="images/4-3A.png" alt="Color - Map View" width = 500>
+                <img src="images/4-3B.png" alt="Color - Candlestick Chart" width = 500>
                 <p>Figure 4.3A shows the general appearance of the map view of our vis. It depicts a link that smoothly animates from one selected country on the map to a second selected country. Point marks indicate the geographic center coordinates of each selected country, with a line mark drawn between them establishing a country-country pair. The red line contrasts well against the green and blue backgrounds, and provides a link between the two red point marks both by color and line. Currently, red was chosen as the color hue for purely for contrast, but a future goal would be to have it change between green and red based on the exchange rate price increases/decreases shown in the candlestick chart. Countries are colored various shades of green based on user mouse hover or click.</p>
                 <p>Figure 4.3B shows the general appearance of our candlestick view of our vis. Color hue is used as a categorical attribute for encoding price increases and decreases.</p>
             </div>
