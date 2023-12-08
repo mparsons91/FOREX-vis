@@ -5,8 +5,6 @@
 *CMSC 436/636, Team 3*
   - Matthew Parsons, Tristan Galcik, Rostam Boroumand Rad, Smit Patne, Seung Min Lee
 
-Link to Research Page: ***TODO, ADD LINK***
-Link to Web App: ***TODO, ADD LINK***
 
 Group3_FinalRelease.zip  
 |----user_manual.pdf  
